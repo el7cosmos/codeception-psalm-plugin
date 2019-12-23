@@ -1,0 +1,46 @@
+{
+    "name": "el7cosmos/codeception-psalm-plugin",
+    "description": "A Codeception plugin for psalm",
+    "type": "psalm-plugin",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Abi أب",
+            "email": "el@elabee.me"
+        }
+    ],
+    "require": {
+        "vimeo/psalm": "^3.7"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^7.2",
+        "squizlabs/php_codesniffer": "^3.3"
+    },
+    "extra": {
+        "psalm" : {
+            "pluginClass": "Psalm\\CodeceptionPlugin\\Plugin"
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Psalm\\CodeceptionPlugin\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Psalm\\CodeceptionPlugin\\Tests\\": "tests"
+        }
+    },
+    "scripts" : {
+        "check": [
+            "@cs-check",
+            "@test",
+            "@analyze"
+        ],
+        "analyze": "psalm",
+        "cs-check": "phpcs",
+        "cs-fix": "phpcbf",
+        "test": "phpunit --colors=always",
+        "test-coverage": "phpunit --colors=always --coverage-clover clover.xml"
+    }
+}
